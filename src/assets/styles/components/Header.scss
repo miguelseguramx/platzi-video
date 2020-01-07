@@ -51,7 +51,13 @@
   cursor: pointer;
 }
 
+.isLogin, .isRegister {
+  background-color: #21c08b;
+}
+
 .header__menu--profile img {
   margin-right: 8px;
   width: 40px;
+  border-radius: 80px;
+  object-fit: cover;
 }
