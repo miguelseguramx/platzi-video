@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, compose } from 'redux';
-import reducer from './reducers';
-import App from './routes/App';
+import { createStore } from 'redux';
+import reducer from './frontend/reducers';
+import App from './frontend/routes/App';
 
 const initialState = {
   'user': {},
@@ -171,9 +171,9 @@ const initialState = {
   ],
 };
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;s
 
-const store = createStore(reducer, initialState/* , composeEnhancers */,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(reducer, initialState/* , composeEnhancers */, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(
   <Provider store={store}>
