@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/frontend/index',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -48,6 +48,8 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
+    host: '0.0.0.0',
+    port: 8080,
   },
   plugins: [
     new HtmlWebpackPlugin({
