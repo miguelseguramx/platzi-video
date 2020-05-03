@@ -9,16 +9,19 @@ import PlatziLogo from '../assets/static/logo-platzi-video-BW2.png';
 import userIcon from '../assets/static/icon-user.png';
 
 const Header = (props) => {
-  const { user, isLogin, isRegister, } = props;
-
-  const hasUser = Object.keys(user).lenght > 0;
+  const { user, isLogin, isRegister } = props;
+  const hasUser = Object.keys(user).length > 0;
 
   const HeaderClass = classNames('header', {
     isLogin,
     isRegister,
   });
-  const handleLogout = () => {
+  const handleLogout = (e) => {
+    document.cookie = 'email=';
+    document.cookie = 'name=';
+    document.cookie = 'id=';
     props.logoutRequest({});
+    window.location.href = '/login';
   };
   return (
     <header className={HeaderClass}>
@@ -34,10 +37,9 @@ const Header = (props) => {
         </div>
         <ul>
           {hasUser ?
-            <li><a href='/'>{user.name}</a></li> :
-            null}
+            <li><a href='/'>{user.name}</a></li> : null}
           {hasUser ?
-            <li><Link to='/login' onClick={handleLogout}>Cerrar Sesión</Link></li> :
+            <li><a href='/' onClick={handleLogout}>Cerrar Sesión</a></li> :
             <li><Link to='/login'>Iniciar Sesion</Link></li>}
         </ul>
       </div>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { registerRequest } from '../actions';
+import { registerUser } from '../actions';
 import '../assets/styles/components/Register.scss';
 import Header from '../components/Header';
 
@@ -14,15 +14,14 @@ const Register = (props) => {
 
   const handleInput = (event) => {
     setValues({
-      ...state,
+      ...form,
       [event.target.name]: event.target.value,
     });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.registerRequest(form);
-    props.history.push('/');
+    props.registerUser(form, 'login');
   };
 
   return (
@@ -65,7 +64,7 @@ const Register = (props) => {
 };
 
 const mapDispatchToProps = {
-  registerRequest,
+  registerUser,
 };
 
 export default connect(null, mapDispatchToProps)(Register);
